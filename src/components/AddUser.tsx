@@ -39,7 +39,7 @@ const SubmitInput = styled.input`
 
 // sample data
 // {
-//   "id": totalUsers + 1,
+//   "id": 11,
 //   "name": "Brad Pitt",
 //   "username": "Samantha",
 //   "email": "Nathan@yesenia.net",
@@ -87,7 +87,7 @@ const AddUser = () => {
     <Title>Add New User</Title>
     <FormPanel>
       <UserForm onSubmit={handleSubmit(onSubmit)}>
-        <FormInput hidden {...register("id")} value={11} />
+        <FormInput hidden {...register("id", { valueAsNumber: true })} value={11} />
         <FormLabel htmlFor="">
           Name:
           <FormInput {...register("name")} />

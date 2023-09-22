@@ -37,12 +37,12 @@ global.fetch = jest.fn();
 
 describe('Add User Form module', () => {
   test('add new user and get response from server', async () => {
-    render(<BrowserRouter><AddUser /></BrowserRouter>);
+    const { container } = render(<BrowserRouter><AddUser /></BrowserRouter>);
     const data: User = {
       "id": 11,
       "name": "Brad Pitt",
-      "username": "Samantha",
-      "email": "Nathan@yesenia.net",
+      "username": "BradPitt",
+      "email": "brad.pitt@gmail.com",
       "address": {
         "street": "Douglas Extension",
         "suite": "Suite 847",
@@ -61,6 +61,63 @@ describe('Add User Form module', () => {
         "bs": "e-enable strategic applications"
       }
     };
+
+    const nameInput = container.querySelector(`input[name="name"]`) as HTMLInputElement;
+    fireEvent.change(nameInput, {
+      target: { value: "Brad Pitt" },
+    });
+    const usernameInput = container.querySelector(`input[name="username"]`) as HTMLInputElement;
+    fireEvent.change(usernameInput, {
+      target: { value: "BradPitt" },
+    });
+    const emailInput = container.querySelector(`input[name="email"]`) as HTMLInputElement;
+    fireEvent.change(emailInput, {
+      target: { value: "brad.pitt@gmail.com" },
+    });
+    const streetInput = container.querySelector(`input[name="address.street"]`) as HTMLInputElement;
+    fireEvent.change(streetInput, {
+      target: { value: "Douglas Extension" },
+    });
+    const suiteInput = container.querySelector(`input[name="address.suite"]`) as HTMLInputElement;
+    fireEvent.change(suiteInput, {
+      target: { value: "Suite 847" },
+    });
+    const cityInput = container.querySelector(`input[name="address.city"]`) as HTMLInputElement;
+    fireEvent.change(cityInput, {
+      target: { value: "McKenziehaven" },
+    });
+    const zipcodeInput = container.querySelector(`input[name="address.zipcode"]`) as HTMLInputElement;
+    fireEvent.change(zipcodeInput, {
+      target: { value: "59590-4157" },
+    });
+    const geoLatInput = container.querySelector(`input[name="address.geo.lat"]`) as HTMLInputElement;
+    fireEvent.change(geoLatInput, {
+      target: { value: "-68.6102" },
+    });
+    const geoLngInput = container.querySelector(`input[name="address.geo.lng"]`) as HTMLInputElement;
+    fireEvent.change(geoLngInput, {
+      target: { value: "-47.0653" },
+    });
+    const phoneInput = container.querySelector(`input[name="phone"]`) as HTMLInputElement;
+    fireEvent.change(phoneInput, {
+      target: { value: "1-463-123-4447" },
+    });
+    const websiteInput = container.querySelector(`input[name="website"]`) as HTMLInputElement;
+    fireEvent.change(websiteInput, {
+      target: { value: "ramiro.info" },
+    });
+    const companyNameInput = container.querySelector(`input[name="company.name"]`) as HTMLInputElement;
+    fireEvent.change(companyNameInput, {
+      target: { value: "Romaguera-Jacobson" },
+    });
+    const companyCPInput = container.querySelector(`input[name="company.catchPhrase"]`) as HTMLInputElement;
+    fireEvent.change(companyCPInput, {
+      target: { value: "Face to face bifurcated interface" },
+    });
+    const companyBSInput = container.querySelector(`input[name="company.bs"]`) as HTMLInputElement;
+    fireEvent.change(companyBSInput, {
+      target: { value: "e-enable strategic applications" },
+    });
 
     const button = screen.getByText('Submit')
     fireEvent.click(button);
